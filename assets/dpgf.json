@@ -1,0 +1,231 @@
+[
+    {
+        "lot": "4 / COUVERTURE - ETANCHEITE",
+        "sous_elements": [
+            {
+                "type": "› Toiture",
+                "elements": [
+                    "Etanchéité",
+                    "Couverture",
+                    "Charpente support couv.",
+                    "Traitement EP",
+                    "Protection particulière",
+                    "Divers - Toiture"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "6 / FAÇADES ET MENUISERIES EXTERIEURES",
+        "sous_elements": [
+            {
+                "type": "› Façades",
+                "elements": [
+                    "Echafaudage",
+                    "Revêtement de façade 1",
+                    "Revêtement de façade 2",
+                    "Revêtement de façade 3",
+                    "Divers - Façades"
+                ]
+            },
+            {
+                "type": "› Ouverture",
+                "elements": [
+                    "Menuiseries PVC",
+                    "Menuiseries Bois",
+                    "Menuiseries Alu",
+                    "Murs rideaux",
+                    "Occultations",
+                    "Verrières",
+                    "Divers - Ouverture"
+                ]
+            },
+            {
+                "type": "› Serrurerie - Métallerie ext.",
+                "elements": [
+                    "Portes des halls (int. et ext.)",
+                    "Portes de parking",
+                    "Garde-corps extérieurs",
+                    "Divers - Serrurerie, Métal. ext."
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "5 / CLOISONS - DOUBLAGES - PLAFONDS SUSPENDUS - MENUISERIES INTERIEURES",
+        "sous_elements": [
+            {
+                "type": "› Cloisons - Doublages",
+                "elements": [
+                    "Cloisons",
+                    "Doublages",
+                    "Cloisons spéciales",
+                    "Divers - Cloisons, Doublages"
+                ]
+            },
+            {
+                "type": "› Faux Plafonds",
+                "elements": [
+                    "Faux plafonds plâtre",
+                    "Faux plafonds décoratifs",
+                    "Divers - Faux Plafonds"
+                ]
+            },
+            {
+                "type": "› Menuiseries int. - Agencement",
+                "elements": [
+                    "Menuiseries intérieures",
+                    "Agencement / Décoration",
+                    "Habillage mural intérieur bois",
+                    "Divers - Men. int., Agencement"
+                ]
+            },
+            {
+                "type": "› Métallerie intérieure",
+                "elements": [
+                    "Serrurerie intérieure",
+                    "Divers - Métallerie intérieure"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "7 / REVÊTEMENTS DES SOLS - MURS - PLAFONDS",
+        "sous_elements": [
+            {
+                "type": "› Sols et murs durs",
+                "elements": [
+                    "Carrelage",
+                    "Faïence",
+                    "Divers - Sols et murs durs"
+                ]
+            },
+            {
+                "type": "› Revêtements de sols souples",
+                "elements": [
+                    "Sols souples",
+                    "Sols coulés",
+                    "Divers - Rev. de sols souples"
+                ]
+            },
+            {
+                "type": "› Peinture - Signalétique",
+                "elements": [
+                    "Peinture de sol",
+                    "Peinture de mur et plafond",
+                    "Signalétique",
+                    "Nettoyage",
+                    "Divers - Peinture, Signalétique"
+                ]
+            },
+            {
+                "type": "› Divers CEA",
+                "elements": []
+            }
+        ]
+    },
+    {
+        "lot": "8 / CHAUFFAGE - VENTILATION - CLIMATISATION",
+        "sous_elements": [
+            {
+                "type": "› CVCD",
+                "elements": [
+                    "Chauffage",
+                    "Ventilation - Climatisation",
+                    "Désenfumage",
+                    "Divers - CVCD"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "9 / INSTALLATIONS SANITAIRES",
+        "sous_elements": [
+            {
+                "type": "› Plomberie Sanitaire",
+                "elements": [
+                    "Plomberie Sanitaire",
+                    "Divers - Plomberie Sanitaire"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "10 / ÉLECTRICITÉ CFO",
+        "sous_elements": [
+            {
+                "type": "› Électricité CFO",
+                "elements": [
+                    "CFO",
+                    "Divers - Élécricité CFO"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "11 / ÉLECTRICITÉ CFA",
+        "sous_elements": [
+            {
+                "type": "› Électricité CFA",
+                "elements": [
+                    "CFA",
+                    "Divers - Élécricité CFA"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "12 / APPAREILS ÉLÉVATEURS ET AUTRES ÉQUIPEMENTS",
+        "sous_elements": [
+            {
+                "type": "› Appareils élévateurs",
+                "elements": [
+                    "Ascenseur",
+                    "Nacelle de nettoyage",
+                    "Divers - Appareils élévateurs"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "LT Spécifique Produit",
+        "sous_elements": [
+            {
+                "type": "› LT Spécifique Produit",
+                "elements": [
+                    "Divers - LT Spécifique Produit"
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "13 / ÉQUIPEMENTS DE PRODUCTION LOCAL D'ÉLECTRICITÉ",
+        "sous_elements": [
+            {
+                "type": "› Équipements prod. élec.",
+                "elements": [
+                    "Groupe électrogène",
+                    "Panneaux photovoltaïques",
+                    "Divers - Équipements prod. élec."
+                ]
+            }
+        ]
+    },
+    {
+        "lot": "1 / VRD",
+        "sous_elements": [
+            {
+                "type": "null",
+                "elements": [
+                    "Voirie",
+                    "Espaces Verts",
+                    "Réseaux",
+                    "Clôtures",
+                    "Portails / Portillons",
+                    "Éclairage extérieur",
+                    "Divers - VRD"
+                ]
+            }
+        ]
+    }
+]

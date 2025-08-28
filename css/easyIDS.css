@@ -1,0 +1,64 @@
+#easyIDSMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+    gap: 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.obli {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+#prerequis {
+    padding: 30px;
+    padding-top: 0px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 8px;
+  text-align: left;
+  font-size: 13px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#tabs {
+  display: flex;
+  border: 2px solid rgb(0, 0, 0);
+}
+#tabs .separation {
+  border: 1px solid rgb(0, 0, 0);
+}
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.tab.selected {
+  background-color: #0d6efd;
+}
+.tab.selected p {
+  color: white;
+}
+#tabs .tab p {
+  margin-bottom: 0px;
+  user-select: none;
+}

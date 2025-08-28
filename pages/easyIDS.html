@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyIDS</title>
+
+    <link rel="icon" sizes="60x60" href="../assets/favicon.png">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/easyIDS.css">
+
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xmlbuilder2@3.1.1/lib/xmlbuilder2.min.js"></script>
+
+    <script defer src="../js/easyIDS.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">
+                <img class="header-site__logo"
+                    src="https://www.eiffage.com/files/live/sites/eiffagev2/files/Home/logo-eiffage.svg" alt="Accueil">
+            </a>
+            <a class="selected" href="./easyIDS.html">EasyIDS</a>
+            <a href="./easyConca.html">EasyConca</a>
+        </nav>
+    </header>
+    <div id="main">
+        <div id="easyIDSMain">
+            <div id="tabs">
+                <div class="tab">
+                    <p>Ligne</p>
+                </div>
+                <div class="separation"></div>
+                <div class="tab selected">
+                    <p>colonne</p>
+                </div>
+            </div>
+            <form class="form hidden" id="rowForm">
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv">
+                        <label for="formFile" class="form-label">Télécharger le tableau des LOD*</label>
+                        <input type="file" class="form-control" id="lodTableFile"
+                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    </div>
+                    <div class="mb-3 inputDiv">
+                        <label for="title" class="form-label">Version IFC</label>
+                        <br>
+                        <select class="form-select" id="versionIFC">
+                            <option value="IFC4">IFC4</option>
+                            <option value="IFC2x3">IFC2x3</option>
+                            <option value="IFC4X3">IFC4X3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mb-3 inputDiv">
+                        <label for="sheetName" class="form-label">Nom de la feuille</label>
+                        <input type="text" id="sheetName" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="title" class="form-label">Titre*</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="author" class="form-label">Auteur*</label>
+                        <input type="text" class="form-control" id="author">
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="version" class="form-label">Version</label>
+                        <input type="number" class="form-control" id="version">
+                    </div>
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description">
+                    </div>
+                </div>
+                <p class="obli">* champs obligatoires
+                    <br>
+                    <a href="easyIDS_prerequis.html">Prérequis pour un ids correct</a>
+                </p>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="generateIDS">Générer mon IDS</button>
+                </div>
+            </form>
+
+            <form class="form" id="columnForm">
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv">
+                        <label for="formFile" class="form-label">Télécharger le tableau des LOD*</label>
+                        <input type="file" class="form-control" id="lodTableFile2"
+                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    </div>
+                    <div class="mb-3 inputDiv">
+                        <label for="title" class="form-label">Version IFC</label>
+                        <br>
+                        <select class="form-select" id="versionIFC2">
+                            <option value="IFC4">IFC4</option>
+                            <option value="IFC2x3">IFC2x3</option>
+                            <option value="IFC4X3">IFC4X3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex gap-3 mb-3">
+                    <!-- <div class="w-50">
+                        <label class="form-label" for="">Case première propriété*</label>
+                        <div class="d-flex gap-2">
+                            <input type="text" placeholder="Colonne" class="form-control w-50">
+                            <input type="text" placeholder="Ligne" class="form-control w-50">
+                        </div>
+                    </div> -->
+                    <div class="w-50">
+                        <label for="sheetName" class="form-label">Nom de la feuille*</label>
+                        <input type="text" class="form-control" id="sheetName2" value="colonne">
+                    </div>
+                    <div class="w-50">
+                        <label for="valuesSheetName" class="form-label">Nom de la feuille des valeurs</label>
+                        <input type="text" class="form-control" id="valuesSheetName">
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="title" class="form-label">Titre*</label>
+                        <input type="text" class="form-control" id="title2" value="myids">
+                    </div>
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="author" class="form-label">Auteur*</label>
+                        <input type="text" class="form-control" id="author2" value="test">
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="version" class="form-label">Version</label>
+                        <input type="number" class="form-control" id="version2">
+                    </div>
+                    <div class="mb-3 inputDiv w-50">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description2">
+                    </div>
+                </div>
+                <p class="obli">* champs obligatoires
+                    <br>
+                    <a href="easyIDS_prerequis.html">Prérequis pour un ids correct</a>
+                </p>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" id="generateIDS2">Générer mon IDS</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <div>v0.1</div>
+            <div>|</div>
+            <div>Developped by <a href="mailto:victor.dubost@eiffage.com">Dubost Victor</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyConca</title>
+
+    <link rel="icon" sizes="60x60" href="../assets/favicon.png">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/easyConca.css">
+
+    <script defer src="../js/easyConca.js" defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"
+        integrity="sha512-dlPw+ytv/6JyepmelABrgeYgHI0O+frEwgfnPdXDTOIZz+eDgfW07QXG02/O8COfivBdGNINy+Vex+lYmJ5rxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">
+                <img class="header-site__logo"
+                    src="https://www.eiffage.com/files/live/sites/eiffagev2/files/Home/logo-eiffage.svg" alt="Accueil">
+            </a>
+            <a href="./easyIDS.html">EasyIDS</a>
+            <a class="selected" href="./easyConca.html">EasyConca</a>
+        </nav>
+    </header>
+    <div id="main">
+        <div id="easyConcaMain">
+            <form class="form">
+                <h2></h2>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Télécharger le classeur excel*</label>
+                    <input type="file" class="form-control" id="userFile"
+                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                </div>
+                <div class="d-flex gap-2 mb-3">
+                    <div class="w-50">
+                        <label for="sheet" class="form-label">Nom de la feuille*</label>
+                        <select id="sheetnameSelect" class="form-control" style="height: min-content;"></select>
+                    </div>
+                    <div class="w-50">
+                        <label for="firstRow" class="form-label">Ligne tableau</label>
+                        <input type="number" id="firstRow" class="form-control" min="0">
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mb-3">
+                    <div class="w-50">
+                        <label for="inputDescription" class="form-label">Col Description</label>
+                        <input type="text" id="inputDescription" class="form-control">
+                    </div>
+                    <div class="w-50">
+                        <label for="inputUnite" class="form-label">Colonne Unité</label>
+                        <input type="text" id="inputUnite" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex gap-2 mb-3">
+                    <div class="w-50">
+                        <label for="inputQuantite" class="form-label">Col Quantité</label>
+                        <input type="text" id="inputQuantite" class="form-control">
+                    </div>
+                    <div class="w-50">
+                        <label for="inputTotal" class="form-label">Colonne Total</label>
+                        <input type="text" id="inputTotal" class="form-control">
+                    </div>
+                </div>
+                <p class="obli">* champs obligatoires
+                    <br>
+                    <a href="easyConca_prerequis.html">Prérequis pour une concaténation correcte</a>
+                </p>
+                <div>
+                    <button type="button" class="btn btn-primary" id="readXlsx">Lire Excel</button>
+                    <button type="button" class="btn btn-primary" id="generateXlsx">Générer Excel</button>
+                </div>
+            </form>
+            <div id="table" class="m-2">
+                <div class="mb-3">
+                    <label for="lotSelect" class="form-label">Lot</label>
+                    <select class="form-select" id="lotSelect"></select>
+                </div>
+                <div class="mb-4">
+                    <label for="sousLotSelect" class="form-label">Sous-lot</label>
+                    <select class="form-select" id="sousLotSelect"></select>
+                </div>
+                <table id="mergedTable" class="">
+                    <thead>
+                        <tr>
+                            <th>Lot</th>
+                            <th>Sous-lot</th>
+                            <th>Bloc de base</th>
+                            <th>Spécificité</th>
+                            <th>Quantité?</th>
+                            <th>Description</th>
+                            <th>Unité</th>
+                            <th>Quantité</th>
+                            <th>Montant total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div>
+            <div>v0.1</div>
+            <div>|</div>
+            <div>Developped by <a href="mailto:victor.dubost@eiffage.com">Dubost Victor</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>
