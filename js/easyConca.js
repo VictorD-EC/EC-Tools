@@ -61,6 +61,10 @@ function columnLetterToIndex(letter) {
     return column - 1;
 }
 readXlsxBtn.addEventListener("click", () => {
+    if (!userFile.value || !sheetnameSelect.value || !descriptionInput.value || !uniteInput.value || !quantiteInput.value || !totalInput.value) {
+        alert("Veuillez remplir tous les champs obligatoire")
+        return
+    }
     const worksheet = workbook.Sheets[sheetnameSelect.value]
     const selectedColumns = [descriptionInput.value.toUpperCase(), uniteInput.value.toUpperCase(), quantiteInput.value.toUpperCase(), totalInput.value.toUpperCase()]
 
