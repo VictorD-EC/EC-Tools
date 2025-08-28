@@ -37,15 +37,15 @@
     <div id="main">
         <div id="easyIDSMain">
             <div id="tabs">
-                <div class="tab">
+                <div class="tab selected">
                     <p>Ligne</p>
                 </div>
                 <div class="separation"></div>
-                <div class="tab selected">
+                <div class="tab">
                     <p>colonne</p>
                 </div>
             </div>
-            <form class="form hidden" id="rowForm">
+            <form class="form" id="rowForm">
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv">
                         <label for="formFile" class="form-label">Télécharger le tableau des LOD*</label>
@@ -64,13 +64,13 @@
                 </div>
                 <div class="d-flex">
                     <div class="mb-3 inputDiv">
-                        <label for="sheetName" class="form-label">Nom de la feuille</label>
+                        <label for="sheetName" class="form-label">Nom de la feuille Excel*</label>
                         <input type="text" id="sheetName" class="form-control">
                     </div>
                 </div>
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv w-50">
-                        <label for="title" class="form-label">Titre*</label>
+                        <label for="title" class="form-label">Titre de l'IDS*</label>
                         <input type="text" class="form-control" id="title">
                     </div>
                     <div class="mb-3 inputDiv w-50">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv w-50">
-                        <label for="version" class="form-label">Version</label>
+                        <label for="version" class="form-label">Version de l'IDS</label>
                         <input type="number" class="form-control" id="version">
                     </div>
                     <div class="mb-3 inputDiv w-50">
@@ -90,14 +90,14 @@
                 </div>
                 <p class="obli">* champs obligatoires
                     <br>
-                    <a href="easyIDS_prerequis.html">Prérequis pour un ids correct</a>
+                    <a href="./easyIDS_prérequis_ligne.html">Prérequis pour un ids correct</a>
                 </p>
                 <div class="text-center">
                     <button type="button" class="btn btn-primary" id="generateIDS">Générer mon IDS</button>
                 </div>
             </form>
 
-            <form class="form" id="columnForm">
+            <form class="form hidden" id="columnForm">
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv">
                         <label for="formFile" class="form-label">Télécharger le tableau des LOD*</label>
@@ -115,35 +115,28 @@
                     </div>
                 </div>
                 <div class="d-flex gap-3 mb-3">
-                    <!-- <div class="w-50">
-                        <label class="form-label" for="">Case première propriété*</label>
-                        <div class="d-flex gap-2">
-                            <input type="text" placeholder="Colonne" class="form-control w-50">
-                            <input type="text" placeholder="Ligne" class="form-control w-50">
-                        </div>
-                    </div> -->
                     <div class="w-50">
-                        <label for="sheetName" class="form-label">Nom de la feuille*</label>
-                        <input type="text" class="form-control" id="sheetName2" value="colonne">
+                        <label for="sheetName" class="form-label">Nom de la feuille Excel*</label>
+                        <input type="text" class="form-control" id="sheetName2">
                     </div>
                     <div class="w-50">
-                        <label for="valuesSheetName" class="form-label">Nom de la feuille des valeurs</label>
+                        <label for="valuesSheetName" class="form-label">Nom de la feuille des valeurs*</label>
                         <input type="text" class="form-control" id="valuesSheetName">
                     </div>
                 </div>
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv w-50">
-                        <label for="title" class="form-label">Titre*</label>
-                        <input type="text" class="form-control" id="title2" value="myids">
+                        <label for="title" class="form-label">Titre de l'IDS*</label>
+                        <input type="text" class="form-control" id="title2">
                     </div>
                     <div class="mb-3 inputDiv w-50">
                         <label for="author" class="form-label">Auteur*</label>
-                        <input type="text" class="form-control" id="author2" value="test">
+                        <input type="text" class="form-control" id="author2">
                     </div>
                 </div>
                 <div class="d-flex gap-3">
                     <div class="mb-3 inputDiv w-50">
-                        <label for="version" class="form-label">Version</label>
+                        <label for="version" class="form-label">Version de l'IDS</label>
                         <input type="number" class="form-control" id="version2">
                     </div>
                     <div class="mb-3 inputDiv w-50">
@@ -153,7 +146,7 @@
                 </div>
                 <p class="obli">* champs obligatoires
                     <br>
-                    <a href="easyIDS_prerequis.html">Prérequis pour un ids correct</a>
+                    <a href="./easyIDS_prérequis_colonne.html">Prérequis pour un ids correct</a>
                 </p>
                 <div class="text-center">
                     <button type="button" class="btn btn-primary" id="generateIDS2">Générer mon IDS</button>
