@@ -277,7 +277,7 @@ function parseNumberValue(value) {
 
 generateXlsxBtn.addEventListener("click", () => {
     const rows = tbody.querySelectorAll('tr.complete')
-    const concaTable = [["Lot", "Sous-lot", "Bloc de base", "Spécificité", "Unité", "Quantité", "Montant Total"]]
+    const concaTable = [["Lot", "Sous-lot", "Bloc de base", "Spécificité", "Unité", "Quantité SD","PU RES", "Montant Total"]]
     rows.forEach(row => {
         const cells = row.querySelectorAll('td');
         let valid = true
@@ -315,6 +315,7 @@ generateXlsxBtn.addEventListener("click", () => {
                     cells[3].querySelector('textarea').value, // spécificité
                     cells[6].textContent, // Unité
                     cells[4].querySelector('input').checked ? Number(cells[7].textContent) : 0, // quantité
+                    Number(cells[7].textContent)/parseNumberValue(cells[8].textContent),
                     parseNumberValue(cells[8].textContent) // total
                 ];
                 concaTable.push(newRow);
@@ -325,7 +326,8 @@ generateXlsxBtn.addEventListener("click", () => {
                     concaTable[existingRowIndex][5] += Number(cells[7].textContent);
                 }
                 // Ajouter le total dans tous les cas
-                concaTable[existingRowIndex][6] += parseNumberValue(cells[8].textContent);
+                concaTable[existingRowIndex][7] += parseNumberValue(cells[8].textContent);
+                concaTable[existingRowIndex][6] = concaTable[existingRowIndex][7]/concaTable[existingRowIndex][5]
             }
         }
     })
