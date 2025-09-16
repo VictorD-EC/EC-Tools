@@ -17,6 +17,39 @@ const version2 = document.getElementById("version2");
 const description2 = document.getElementById("description2");
 const generateIDSBtn2 = document.getElementById("generateIDS2");
 
+lodTableFile.addEventListener("change", (e) => {
+    const data = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const binaryString = event.target.result;
+        workbook = XLSX.read(binaryString, { type: 'binary' });
+        sheetName.innerHTML = "";
+        workbook.SheetNames.forEach(element => {
+            let option = document.createElement("option");
+            option.value = element;
+            option.textContent = element;
+            sheetName.appendChild(option);
+        });
+    };
+    reader.readAsBinaryString(data);
+});
+lodTableFile2.addEventListener("change", (e) => {
+    const data = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const binaryString = event.target.result;
+        workbook = XLSX.read(binaryString, { type: 'binary' });
+        sheetName2.innerHTML = "";
+        workbook.SheetNames.forEach(element => {
+            let option = document.createElement("option");
+            option.value = element;
+            option.textContent = element;
+            sheetName2.appendChild(option);
+        });
+    };
+    reader.readAsBinaryString(data);
+});
+
 function displayRowForm() {
     // Sélectionner les onglets
     const tabs = document.querySelectorAll('#tabs .tab');
