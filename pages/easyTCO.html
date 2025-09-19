@@ -11,10 +11,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/easyTCO.css">
 
-    <script defer src="../js/easyTCO.js" defer></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"
-        integrity="sha512-dlPw+ytv/6JyepmelABrgeYgHI0O+frEwgfnPdXDTOIZz+eDgfW07QXG02/O8COfivBdGNINy+Vex+lYmJ5rxw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="../js/easyTCO.js" type="module" defer></script>
+    <!-- <script src="../js/main.js" defer type="module"></script> -->
 
     <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -39,47 +37,66 @@
     <div id="main">
         <div id="easyConcaMain">
             <form class="form">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Télécharger le TCO (excel)*</label>
-                    <input type="file" class="form-control" id="userFile"
-                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                <div id="formTabs">
+                    <div class="tab tabSelected">Nouvel excel</div>
+                    <div class="tab">Importer tableau</div>
                 </div>
-                <div class="d-flex gap-2 mb-3">
-                    <div class="w-50">
-                        <label for="sheet" class="form-label">Nom de la feuille*</label>
-                        <select id="sheetnameSelect" class="form-control" style="height: min-content;"></select>
+                <div class="p-3 formContent">
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Télécharger le TCO (excel)*</label>
+                        <input type="file" class="form-control" id="userFile"
+                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                     </div>
-                    <div class="w-50">
-                        <label for="firstRow" class="form-label">Ligne tableau</label>
-                        <input type="number" id="firstRow" class="form-control" min="0">
+                    <div class="d-flex gap-2 mb-3">
+                        <div class="w-50">
+                            <label for="sheet" class="form-label">Nom de la feuille*</label>
+                            <select id="sheetnameSelect" class="form-control" style="height: min-content;"></select>
+                        </div>
+                        <div class="w-50">
+                            <label for="firstRow" class="form-label">Ligne tableau</label>
+                            <input type="number" id="firstRow" class="form-control" min="0">
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mb-3">
+                        <div class="w-50">
+                            <label for="inputDescription" class="form-label">Col Description*</label>
+                            <input type="text" id="inputDescription" class="form-control">
+                        </div>
+                        <div class="w-50">
+                            <label for="inputUnite" class="form-label">Colonne Unité*</label>
+                            <input type="text" id="inputUnite" class="form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mb-3">
+                        <div class="w-50">
+                            <label for="inputQuantite" class="form-label">Col Quantité*</label>
+                            <input type="text" id="inputQuantite" class="form-control">
+                        </div>
+                        <div class="w-50">
+                            <label for="inputTotal" class="form-label">Colonne Total*</label>
+                            <input type="text" id="inputTotal" class="form-control">
+                        </div>
+                    </div>
+                    <p class="obli">* champs obligatoires
+                        <br>
+                        <a href="easyConca_prerequis.html">Prérequis pour une concaténation correcte</a>
+                    </p>
+                    <div>
+                        <button type="button" class="btn btn-primary" id="readXlsx">Lire Excel</button>
                     </div>
                 </div>
-                <div class="d-flex gap-2 mb-3">
-                    <div class="w-50">
-                        <label for="inputDescription" class="form-label">Col Description*</label>
-                        <input type="text" id="inputDescription" class="form-control">
+                <div class="p-3 formContent hidden">
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Télécharger le TCO (excel)*</label>
+                        <input type="file" class="form-control" id="userFile2"
+                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                     </div>
-                    <div class="w-50">
-                        <label for="inputUnite" class="form-label">Colonne Unité*</label>
-                        <input type="text" id="inputUnite" class="form-control">
+                    <p class="obli">* champs obligatoires
+                        <br>
+                    </p>
+                    <div>
+                        <button type="button" class="btn btn-primary" id="readXlsx2">Lire Excel</button>
                     </div>
-                </div>
-                <div class="d-flex gap-2 mb-3">
-                    <div class="w-50">
-                        <label for="inputQuantite" class="form-label">Col Quantité*</label>
-                        <input type="text" id="inputQuantite" class="form-control">
-                    </div>
-                    <div class="w-50">
-                        <label for="inputTotal" class="form-label">Colonne Total*</label>
-                        <input type="text" id="inputTotal" class="form-control">
-                    </div>
-                </div>
-                <p class="obli">* champs obligatoires
-                    <br>
-                    <a href="easyConca_prerequis.html">Prérequis pour une concaténation correcte</a>
-                </p>
-                <div>
-                    <button type="button" class="btn btn-primary" id="readXlsx">Lire Excel</button>
                 </div>
             </form>
             <div id="table" class="m-2">
