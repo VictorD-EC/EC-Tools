@@ -100,16 +100,18 @@
                 </div>
             </form>
             <div id="table" class="m-2">
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary" id="generateXlsx">Générer Excel</button>
-                </div>
-                <div class="mb-3">
-                    <label for="lotSelect" class="form-label">Lot</label>
-                    <select class="form-select" id="lotSelect"></select>
-                </div>
-                <div class="mb-4">
-                    <label for="sousLotSelect" class="form-label">Sous-lot</label>
-                    <select class="form-select" id="sousLotSelect"></select>
+                <div class="d-flex align-items-end mb-4">
+                    <div class="">
+                        <label for="lotSelect" class="form-label">Lot</label>
+                        <select class="form-select" id="lotSelect"></select>
+                    </div>
+                    <div class="">
+                        <label for="sousLotSelect" class="form-label">Sous-lot</label>
+                        <select class="form-select" id="sousLotSelect"></select>
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-primary" id="generateXlsx">Générer Excel</button>
+                    </div>
                 </div>
                 <table id="mergedTable" class="">
                     <thead>
