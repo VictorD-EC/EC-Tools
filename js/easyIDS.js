@@ -78,18 +78,75 @@ function displayColumnForm() {
 
 // Fonction pour obtenir les données depuis le tableau Excel
 function getRowsDatas(worksheet) {
+    // Obtenir les données en tant qu'objets
     const data = XLSX.utils.sheet_to_json(worksheet);
 
-    const datas = {};
+    // Récupérer les informations sur les cellules fusionnées
+    const merges = worksheet['!merges'] || [];
 
-    // Parcours des lignes
-    for (const row of data) {
+    // Créer une carte pour stocker les valeurs des cellules fusionnées
+    const mergeValues = {};
+
+    // Traiter les cellules fusionnées
+    merges.forEach(merge => {
+        const startCell = XLSX.utils.encode_cell({ r: merge.s.r, c: merge.s.c });
+        const startValue = worksheet[startCell] ? worksheet[startCell].v : null;
+
+        // Stocker la valeur pour chaque cellule dans la plage fusionnée
+        for (let r = merge.s.r; r <= merge.e.r; r++) {
+            for (let c = merge.s.c; c <= merge.e.c; c++) {
+                const cellRef = XLSX.utils.encode_cell({ r, c });
+                mergeValues[cellRef] = startValue;
+            }
+        }
+    });
+
+    // Compléter les données manquantes pour les cellules fusionnées
+    const headers = Object.keys(data[0] || {});
+    const completeData = [];
+
+    // Convertir le worksheet en tableau 2D avec index de ligne/colonne
+    const range = XLSX.utils.decode_range(worksheet['!ref']);
+    for (let r = range.s.r + 2; r <= range.e.r; r++) { // +1 pour sauter l'en-tête
+        const rowData = {};
+        let rowHasData = false;
+
+        for (let c = range.s.c; c <= range.e.c; c++) {
+            const cellRef = XLSX.utils.encode_cell({ r, c });
+            const headerCell = XLSX.utils.encode_cell({ r: range.s.r, c });
+            const headerValue = worksheet[headerCell] ? worksheet[headerCell].v : null;
+
+            // Si c'est une cellule fusionnée, prendre la valeur de la carte
+            if (mergeValues[cellRef] !== undefined) {
+                rowData[headerValue] = mergeValues[cellRef];
+                rowHasData = true;
+            }
+            // Sinon prendre la valeur normale
+            else if (worksheet[cellRef]) {
+                rowData[headerValue] = worksheet[cellRef].v;
+                rowHasData = true;
+            }
+        }
+
+        if (rowHasData) {
+            completeData.push(rowData);
+        }
+    }
+
+    const datas = {};
+    console.log(completeData);
+
+    // Parcourir les lignes complétées
+    for (const row of completeData.length > 0 ? completeData : data) {
         const famillesObjet = row["Famille d'objet"];
         const classeIfc = row["Classe IFC"];
         const pset = row["Jeu de propriété Pset"];
         const propriete = row["Propriété"];
         const typeDeValeur = row["Type de valeur"];
         const valeur = row["Valeur"] || null;
+
+        // Vérifier que les valeurs essentielles existent
+        if (!propriete || !pset || !classeIfc) continue;
 
         // Si la propriété n'existe pas dans le dictionnaire, on la crée
         if (!datas[propriete]) {
@@ -106,29 +163,88 @@ function getRowsDatas(worksheet) {
             datas[propriete]["Entités"].push(classeIfc);
         }
     }
+
     console.log(datas);
     return datas;
 }
+
 function getColumnsDatas(worksheet, valuesWorksheet) {
-    const data = XLSX.utils.sheet_to_json(worksheet);
+    // Récupérer les informations sur les cellules fusionnées
+    const merges = worksheet['!merges'] || [];
+    const mergeValues = {};
+
+    // Traiter les cellules fusionnées
+    merges.forEach(merge => {
+        const startCell = XLSX.utils.encode_cell({ r: merge.s.r, c: merge.s.c });
+        const startValue = worksheet[startCell] ? worksheet[startCell].v : null;
+
+        // Stocker la valeur pour chaque cellule dans la plage fusionnée
+        for (let r = merge.s.r; r <= merge.e.r; r++) {
+            for (let c = merge.s.c; c <= merge.e.c; c++) {
+                const cellRef = XLSX.utils.encode_cell({ r, c });
+                mergeValues[cellRef] = startValue;
+            }
+        }
+    });
+
+    // Convertir en objets en tenant compte des fusions
+    const range = XLSX.utils.decode_range(worksheet['!ref']);
+    const headers = [];
+
+    // Récupérer les en-têtes
+    for (let c = range.s.c; c <= range.e.c; c++) {
+        const headerCell = XLSX.utils.encode_cell({ r: range.s.r, c });
+        if (worksheet[headerCell]) {
+            headers[c] = worksheet[headerCell].v;
+        }
+    }
+
+    // Construire les données
+    const rawData = [];
+    for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        const rowData = {};
+        for (let c = range.s.c; c <= range.e.c; c++) {
+            const cellRef = XLSX.utils.encode_cell({ r, c });
+            const header = headers[c];
+
+            if (header) {
+                // Utiliser la valeur de la cellule fusionnée si disponible
+                if (mergeValues[cellRef] !== undefined) {
+                    rowData[header] = mergeValues[cellRef];
+                }
+                // Sinon utiliser la valeur normale de la cellule
+                else if (worksheet[cellRef]) {
+                    rowData[header] = worksheet[cellRef].v;
+                }
+                else {
+                    rowData[header] = null;
+                }
+            }
+        }
+        rawData.push(rowData);
+    }
+
+    // Continuer avec votre logique existante
+    const data = rawData;
     const datas = {};
 
     const valuesMap = {};
     const valuesData = XLSX.utils.sheet_to_json(valuesWorksheet);
-    console.log(valuesData);
+
     for (const row of valuesData) {
         const propriete = row["Propriété"];
         valuesMap[propriete] = {
-            Valeur: row["Valeur"] || null, // Prend la valeur si elle existe, sinon null
-            TypeDeValeur: row["Type"] || null, // Prend le type si il existe, sinon null
+            Valeur: row["Valeur"] || null,
+            TypeDeValeur: row["Type"] || null,
             Pset: row["Pset"] || null
         };
     }
-    console.log(valuesMap);
+
     for (const row of data) {
         const classeIfc = row["Classe IFC"];
-        delete row["Classe IFC"];
+        if (!classeIfc) continue; // Ignorer les lignes sans classe IFC
 
+        delete row["Classe IFC"];
         const familleObjet = row["Famille d'objet"];
         delete row["Famille d'objet"];
 
@@ -139,12 +255,11 @@ function getColumnsDatas(worksheet, valuesWorksheet) {
                         Entités: [],
                         Valeur: null,
                         TypeDeValeur: null,
-                        Pset: valuesMap[propriete].Pset
+                        Pset: valuesMap[propriete]?.Pset || null
                     };
                 }
                 datas[propriete]["Entités"].push(classeIfc);
 
-                // Ajout de la valeur et du type depuis valuesMap si la propriété existe dans valuesWorksheet
                 if (valuesMap[propriete]) {
                     datas[propriete]["Valeur"] = valuesMap[propriete].Valeur;
                     datas[propriete]["TypeDeValeur"] = valuesMap[propriete].TypeDeValeur;
@@ -152,6 +267,7 @@ function getColumnsDatas(worksheet, valuesWorksheet) {
             }
         }
     }
+
     console.log(datas);
     return datas;
 }
@@ -370,7 +486,7 @@ document.addEventListener("click", (e) => {
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
+            const workbook = XLSX.read(data, { type: 'array', cellMerge: true });
             const worksheet = workbook.Sheets[sheetName.value]
 
             const titleValue = title.value || "easyIDS";
@@ -405,7 +521,7 @@ document.addEventListener("click", (e) => {
         const reader = new FileReader();
         reader.onload = function (e) {
             const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
+            const workbook = XLSX.read(data, { type: 'array', cellMerge: true });
             const worksheet = workbook.Sheets[sheetName2.value]
             const valuesWorksheet = workbook.Sheets[valuesSheetName.value]
 

@@ -15,7 +15,6 @@ const generateXlsxBtn = document.getElementById('generateXlsx');
 const userFile2 = document.getElementById('userFile2');
 const readXlsxBtn2 = document.getElementById('readXlsx2');
 
-
 const lotSelect = document.getElementById('lotSelect');
 const sousLotSelect = document.getElementById('sousLotSelect');
 const tbody = document.getElementById('tbody')
