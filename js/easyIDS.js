@@ -134,7 +134,6 @@ function getRowsDatas(worksheet) {
     }
 
     const datas = {};
-    console.log(completeData);
 
     // Parcourir les lignes complétées
     for (const row of completeData.length > 0 ? completeData : data) {
@@ -164,7 +163,6 @@ function getRowsDatas(worksheet) {
         }
     }
 
-    console.log(datas);
     return datas;
 }
 
@@ -268,7 +266,6 @@ function getColumnsDatas(worksheet, valuesWorksheet) {
         }
     }
 
-    console.log(datas);
     return datas;
 }
 
