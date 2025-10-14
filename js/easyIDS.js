@@ -270,36 +270,32 @@ function getColumnsDatas(worksheet, valuesWorksheet) {
 }
 
 
-// Fonction pour générer le XML en utilisant l'API DOM native
+// Fonction pour générer le XML en utilisant l'API DOM native (modifiée)
 function generateXML(datas, userDatas) {
-    // Création du document XML
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString('<xml/>', 'application/xml');
-
     // Définition des namespaces
     const idsNamespace = "http://standards.buildingsmart.org/IDS";
     const xsNamespace = "http://www.w3.org/2001/XMLSchema";
     const xsiNamespace = "http://www.w3.org/2001/XMLSchema-instance";
 
+    // Création du document XML avec préfixe ids
+    const xmlDoc = document.implementation.createDocument(idsNamespace, "ids:ids", null);
+
     // Fonction utilitaire pour créer des éléments avec le namespace IDS et le préfixe ids:
     function createIdsElement(elementName) {
-        return xmlDoc.createElementNS(idsNamespace, elementName); // Pas de préfixe ici
+        return xmlDoc.createElementNS(idsNamespace, "ids:" + elementName);
     }
 
     // Fonction utilitaire pour créer des éléments avec le namespace XML Schema et le préfixe xs:
     function createXsElement(elementName) {
-        return xmlDoc.createElementNS(xsNamespace, elementName); // Pas de préfixe ici
+        return xmlDoc.createElementNS(xsNamespace, "xs:" + elementName);
     }
 
-    // Créer l'élément racine ids
-    const root = xmlDoc.createElementNS(idsNamespace, "ids");
-    root.setAttribute("xmlns:ids", idsNamespace);
-    root.setAttribute("xmlns:xs", xsNamespace);
-    root.setAttribute("xmlns:xsi", xsiNamespace);
+    // Configurer l'élément racine avec les namespaces
+    const root = xmlDoc.documentElement;
+    root.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:ids", idsNamespace);
+    root.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xs", xsNamespace);
+    root.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xsi", xsiNamespace);
     root.setAttributeNS(xsiNamespace, "xsi:schemaLocation", "http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd");
-
-    // Remplacer l'élément racine temporaire <xml/> par l'élément root correct
-    xmlDoc.replaceChild(root, xmlDoc.documentElement);
 
     // Balise info
     const info = createIdsElement("info");
@@ -406,41 +402,54 @@ function generateXML(datas, userDatas) {
         }
     }
 
+    // Ajouter la fonction pour ajouter la déclaration XML
+    function addXMLDeclaration(xmlString) {
+        return '<?xml version="1.0" encoding="UTF-8"?>\n' + xmlString;
+    }
+
     // Conversion en chaîne de caractères
     const serializer = new XMLSerializer();
-    const xmlString = serializer.serializeToString(xmlDoc);
+    let xmlString = serializer.serializeToString(xmlDoc);
 
-    // Formatage du XML (indentation)
-    const formattedXml = formatXml(xmlString);
+    // Formatage du XML
+    let formattedXml = formatXml(xmlString);
+
+    // Ajout de la déclaration XML
+    formattedXml = addXMLDeclaration(formattedXml);
 
     // Création et téléchargement du fichier
-    const fileName = `${userDatas[0].replace(/ /g, '_')}.ids`; // Suppression de la date dans le nom du fichier
+    const fileName = `${userDatas[0].replace(/ /g, '_')}.ids`;
     downloadFile(formattedXml, fileName, 'application/xml');
 
     return formattedXml;
 }
 
-
-// Fonction pour formater le XML (ajouter des indentations)
+// Fonction pour formater le XML (ajouter des indentations) - modifiée pour préserver les préfixes
 function formatXml(xml) {
     let formatted = '';
     let indent = '';
     const tab = '  '; // 2 espaces pour l'indentation
 
+    // Préserver les préfixes d'espace de noms
+    xml = xml.replace(/xmlns:([\w]+)="([^"]+)"/g, function (match) {
+        return match;
+    });
+
     xml.split(/>\s*</).forEach(function (node) {
-        if (node.match(/^\/\w/)) { // Balise fermante
+        if (node.match(/^\/[\w:]/)) { // Balise fermante avec ou sans préfixe
             indent = indent.substring(tab.length);
         }
 
         formatted += indent + '<' + node + '>\r\n';
 
-        if (node.match(/^<?\w[^>]*[^\/]$/) && !node.startsWith("?")) { // Balise ouvrante
+        if (node.match(/^<?\w[\w:]*[^>]*[^\/]$/) && !node.startsWith("?")) { // Balise ouvrante avec ou sans préfixe
             indent += tab;
         }
     });
 
     return formatted.substring(1, formatted.length - 3);
 }
+
 
 // Fonction pour télécharger le fichier généré
 function downloadFile(content, fileName, contentType) {
