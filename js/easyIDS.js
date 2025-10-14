@@ -107,7 +107,7 @@ function getRowsDatas(worksheet) {
 
     // Convertir le worksheet en tableau 2D avec index de ligne/colonne
     const range = XLSX.utils.decode_range(worksheet['!ref']);
-    for (let r = range.s.r + 2; r <= range.e.r; r++) { // +1 pour sauter l'en-tête
+    for (let r = range.s.r + 1; r <= range.e.r; r++) { // +1 pour sauter l'en-tête
         const rowData = {};
         let rowHasData = false;
 
@@ -145,7 +145,7 @@ function getRowsDatas(worksheet) {
         const valeur = row["Valeur"] || null;
 
         // Vérifier que les valeurs essentielles existent
-        if (!propriete || !pset || !classeIfc) continue;
+        if (!propriete || !classeIfc) continue;
 
         // Si la propriété n'existe pas dans le dictionnaire, on la crée
         if (!datas[propriete]) {
@@ -364,41 +364,59 @@ function generateXML(datas, userDatas) {
         const requirements = createIdsElement("requirements");
         specification.appendChild(requirements);
 
-        // Property
-        const propertyElement = createIdsElement("property");
-        propertyElement.setAttribute("cardinality", "required");
-        requirements.appendChild(propertyElement);
+        // Vérification de l'existence de Pset
+        if (details["Pset"] && details["Pset"].trim() !== "") {
+            // Si Pset existe, créer un élément property
+            const propertyElement = createIdsElement("property");
+            propertyElement.setAttribute("cardinality", "required");
+            requirements.appendChild(propertyElement);
 
-        const propertySet = createIdsElement("propertySet");
-        propertyElement.appendChild(propertySet);
+            const propertySet = createIdsElement("propertySet");
+            propertyElement.appendChild(propertySet);
 
-        const propertySetSimpleValue = createIdsElement("simpleValue");
-        propertySetSimpleValue.textContent = String(details["Pset"]);
-        propertySet.appendChild(propertySetSimpleValue);
+            const propertySetSimpleValue = createIdsElement("simpleValue");
+            propertySetSimpleValue.textContent = String(details["Pset"]);
+            propertySet.appendChild(propertySetSimpleValue);
 
-        const nameElement = createIdsElement("baseName");
-        propertyElement.appendChild(nameElement);
+            // Name/BaseName pour les propriétés avec Pset
+            const nameElement = createIdsElement("baseName");
+            propertyElement.appendChild(nameElement);
 
-        const nameSimpleValue = createIdsElement("simpleValue");
-        nameSimpleValue.textContent = propriete;
-        nameElement.appendChild(nameSimpleValue);
+            const nameSimpleValue = createIdsElement("simpleValue");
+            nameSimpleValue.textContent = propriete;
+            nameElement.appendChild(nameSimpleValue);
 
-        // Gestion de la valeur
-        const valeur = details["Valeur"];
-        if (valeur && String(valeur).toLowerCase() !== "nan") {
-            const valeurElement = createIdsElement("value");
-            propertyElement.appendChild(valeurElement);
+            // Gestion de la valeur (seulement si Pset existe)
+            const valeur = details["Valeur"];
+            if (valeur && String(valeur).toLowerCase() !== "nan") {
+                const valeurElement = createIdsElement("value");
+                propertyElement.appendChild(valeurElement);
 
-            const xsRestriction = createXsElement("restriction");
-            xsRestriction.setAttribute("base", "xs:string");
-            valeurElement.appendChild(xsRestriction);
+                const xsRestriction = createXsElement("restriction");
+                xsRestriction.setAttribute("base", "xs:string");
+                valeurElement.appendChild(xsRestriction);
 
-            const valeurs = String(valeur).split(',');
-            for (const v of valeurs) {
-                const enumeration = createXsElement("enumeration");
-                enumeration.setAttribute("value", v.trim());
-                xsRestriction.appendChild(enumeration);
+                const valeurs = String(valeur).split(',');
+                for (const v of valeurs) {
+                    const enumeration = createXsElement("enumeration");
+                    enumeration.setAttribute("value", v.trim());
+                    xsRestriction.appendChild(enumeration);
+                }
             }
+        } else {
+            // Si pas de Pset, créer un élément attribute
+            const attributeElement = createIdsElement("attribute");
+            attributeElement.setAttribute("cardinality", "required");
+            attributeElement.setAttribute("type", details["TypeDeValeur"] || "STRING");
+            requirements.appendChild(attributeElement);
+
+            // Name pour les attributs sans Pset
+            const nameElement = createIdsElement("name");
+            attributeElement.appendChild(nameElement);
+
+            const nameSimpleValue = createIdsElement("simpleValue");
+            nameSimpleValue.textContent = propriete;
+            nameElement.appendChild(nameSimpleValue);
         }
     }
 
