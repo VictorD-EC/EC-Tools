@@ -337,7 +337,8 @@ function generateXML(datas, userDatas) {
     for (const [propriete, details] of Object.entries(datas)) {
         i++;
         const specification = createIdsElement("specification");
-        specification.setAttribute("name", `Specification ${i}`);
+        // specification.setAttribute("name", `Specification ${i}`);
+        specification.setAttribute("name", propriete);
         specification.setAttribute("ifcVersion", userDatas[4]);
         specifications.appendChild(specification);
 
