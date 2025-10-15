@@ -256,7 +256,10 @@ function getColumnsDatas(worksheet, valuesWorksheet) {
                         Pset: valuesMap[propriete]?.Pset || null
                     };
                 }
-                datas[propriete]["Entités"].push(classeIfc);
+                // Ajouter uniquement si la classe IFC n'est pas déjà présente
+                if (!datas[propriete]["Entités"].includes(classeIfc)) {
+                    datas[propriete]["Entités"].push(classeIfc);
+                }
 
                 if (valuesMap[propriete]) {
                     datas[propriete]["Valeur"] = valuesMap[propriete].Valeur;
