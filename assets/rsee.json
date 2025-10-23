@@ -1,0 +1,294 @@
+{
+    "seul": [
+        {
+            "name" : "Surface de la parcelle",
+            "path" : "/projet/rsenv/entree_projet/parcelle/surface_parcelle",
+            "type" : "number"
+        },
+        {
+            "name" : "Surface végétalisée",
+            "path" : "/projet/rsenv/entree_projet/parcelle/surface_veg",
+            "type" : "number"
+        },
+        {
+            "name" : "Surface imperméabilisée",
+            "path" : "/projet/rsenv/entree_projet/parcelle/surface_imper",
+            "type" : "number"
+        },
+        {
+            "name" : "Zone climatique",
+            "path" : "/projet/Datas_Comp/donnees_generales/operation/zone_climatique",
+            "type" : "string"
+        }
+    ],
+    "batiment": [
+        {
+            "name" : "Type de structure principale",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_structure_principale",
+            "type" : "number"
+        },
+        {
+            "name" : "Materieu de la structure",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/materiau_structure",
+            "type" : "number"
+        },
+        {
+            "name" : "Elements préfabriqués",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/elements_prefabriques",
+            "type" : "number"
+        },
+        {
+            "name" : "Type de plancher",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_plancher",
+            "type" : "number"
+        },
+        {
+            "name" : "Materiau de remplissage de la façade",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/materiau_remplissage_facade",
+            "type" : "number"
+        },
+        {
+            "name" : "Type de fondation",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_fondation",
+            "type" : "number"
+        },
+        {
+            "name" : "Mode d'isolation du mur",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/mur_mode_isolation",
+            "type" : "number"
+        },
+        {
+            "name" : "Nature de l'isolant du mur",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/mur_nature_isolant",
+            "type" : "number"
+        },
+        {
+            "name" : "Revêtement exterieur du mur",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/mur_revetement_ext",
+            "type" : "number"
+        },
+        {
+            "name" : "Type de menuiserie",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_menuiserie",
+            "type" : "number"
+        },
+        {
+            "name" : "Type de protection mobile",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_pm",
+            "type" : "number"
+        },
+        {
+            "name" : "Type principal de toiture",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/type_toiture",
+            "type" : "number"
+        },
+        {
+            "name" : "Mode d'isolation de la toiture",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/toiture_mode_isolation",
+            "type" : "number"
+        },
+        {
+            "name" : "Nature de l'isolant de la toiture",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/toiture_nature_isolant",
+            "type" : "number"
+        },
+        {
+            "name" : "Toiture végétalisée",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/toiture_vegetalisee",
+            "type" : "number"
+        },
+        {
+            "name" : "Type de couverture",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/toiture_couverture",
+            "type" : "number"
+        },
+        {
+            "name" : "Matériau de la structure",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/donnees_techniques/materiau_structure",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de places de parking infra",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/nb_place_parking_infra",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de places de parking supra",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/nb_place_parking_supra",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de parking extérieur",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/nb_place_parking_ext",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de niveaux infra",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/nb_niv_ssol",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de niveaux super",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/nb_niv_surface",
+            "type" : "number"
+        },
+        {
+            "name" : "Terres excavées",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/calculette_chantier/terres_excavees",
+            "type" : "number"
+        },
+        {
+            "name" : "Terres importees",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/calculette_chantier/terres_importees",
+            "type" : "number"
+        },
+        {
+            "name" : "Terres évacuées",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/calculette_chantier/terres_evacuees",
+            "type" : "number"
+        },
+        {
+            "name" : "Shab",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/O_SHAB",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre d'occurences",
+            "path" : "/projet/datas_comp/batiment_collection/batiment/n_occ",
+            "type" : "number"
+        },
+        {
+            "name" : "Sref",
+            "path" : "/projet/Datas_Comp/batiment_collection/batiment/O_SREF",
+            "type" : "number"
+        },
+        {
+            "name" : "Usage",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/usage",
+            "type" : "number"
+        },
+        {
+            "name" : "Ic batiment",
+            "path" : "/projet/rsenv/Sortie_Projet/batiment/indicateur_perf_env/ic_batiment",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre de logements",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/nb_logement",
+            "type" : "number"
+        },
+        {
+            "name" : "Ic contruction",
+            "path" : "/projet/rsenv/Sortie_Projet/batiment/indicateur_perf_env/ic_construction",
+            "type" : "number"
+        },
+        {
+            "name" : "Ic contruction maximum",
+            "path" : "/projet/rsenv/Sortie_Projet/batiment/indicateur_perf_env/ic_construction_max",
+            "type" : "number"
+        },
+        {
+            "name" : "Ic energie",
+            "path" : "/projet/rsenv/Sortie_Projet/batiment/indicateur_perf_env/ic_energie",
+            "type" : "number"
+        },
+        {
+            "name" : "Ic energie maximum",
+            "path" : "/projet/rsenv/Sortie_Projet/batiment/indicateur_perf_env/ic_energie_max",
+            "type" : "number"
+        }
+    ],
+    "Sortie_Batiment_B": [
+        {
+            "name" : "Bbio annuel",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/O_Bbio_pts_annuel",
+            "type" : "number"
+        },
+        {
+            "name" : "Bbio maximum",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/O_Bbio_Max",
+            "type" : "number"
+        },
+        {
+            "name" : "Ratio psi",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/Ratio_psi",
+            "type" : "number"
+        },
+        {
+            "name" : "a opv",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/sortie_zone_b_collection/sortie_zone_b/A_opv",
+            "type" : "number"
+        },
+        {
+            "name" : "a baies",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/sortie_zone_b_collection/sortie_zone_b/A_baies",
+            "type" : "number"
+        },
+        {
+            "name" : "a ophh",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_B_Collection/Sortie_Batiment_B/sortie_zone_b_collection/sortie_zone_b/A_ophh",
+            "type" : "number"
+        }
+    ],
+    "Sortie_Batiment_C": [
+        {
+            "name" : "Cep annuel",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/O_Cep_annuel",
+            "type" : "number"
+        },
+        {
+            "name" : "Cep,nr annuel",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/O_Cep_nr_annuel",
+            "type" : "number"
+        },
+        {
+            "name" : "Cep maximum",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/O_Cep_Max",
+            "type" : "number"
+        },
+        {
+            "name" : "Cep,nr maximum",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/O_Cep_nr_Max",
+            "type" : "number"
+        },
+        {
+            "name" : "Cef annuel",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/O_Cef_annuel",
+            "type" : "number"
+        },
+        {
+            "name" : "Générateur principal chauffage",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/generateur_principal_ch",
+            "type" : "number"
+        },
+        {
+            "name" : "Générateur principal chauffage ECS",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/generateur_principal_ecs",
+            "type" : "number"
+        },
+        {
+            "name" : "Générateur principal froid",
+            "path" : "/projet/RSET/Sortie_Projet/Sortie_Batiment_C_Collection/Sortie_Batiment_C/generateur_principal_fr",
+            "type" : "number"
+        }
+    ],
+    "Sortie_Groupe_D": [
+        {
+            "name" : "Nombre degrés heures",
+            "path" : "/projet/RSET/Sortie_Projet/Groupe_Inconf_Collection/Sortie_Groupe_D/O_NbDegresHeures",
+            "type" : "number"
+        },
+        {
+            "name" : "Nombre degrés heures max",
+            "path" : "/projet/RSET/Sortie_Projet/Groupe_Inconf_Collection/Sortie_Groupe_D/O_NbDegresHeures_max",
+            "type" : "number"
+        }
+    ],
+    "type_donnees": [
+        {
+            "name" : "Type de données",
+            "path" : "/projet/rsenv/entree_projet/batiment/zone/contributeur/composant/lot/sous_lot/donnees_composant/type_donnees",
+            "type" : "number"
+        }
+    ]
+}

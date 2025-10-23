@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSEE Checker</title>
+
+    <link rel="icon" sizes="60x60" href="../assets/favicon.png">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/RSEE-checker.css">
+
+    <script src="../js/RSEE-checker.js" defer></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">
+                <img class="header-site__logo"
+                    src="https://www.eiffage.com/files/live/sites/eiffagev2/files/Home/logo-eiffage.svg" alt="Accueil">
+            </a>
+            <a href="./easyIDS.html">EasyIDS</a>
+            <a href="./easyTCO.html">EasyTCO</a>
+            <a class="selected" href="./RSEE-checker.html">RSEE-checker</a>
+        </nav>
+    </header>
+
+    <div id="main" class="mt-5">
+        <div id="form">
+            <h1>RSEE checker</h1>
+            <hr>
+            <div class="mb-3">
+                <label for="file" class="form-label">Insérer le fichier xml*</label>
+                <input type="file" accept=".xml" class="form-control" name="file" id="inputFile">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="normal" id="verifBtn">
+                    <span>Vérifier mon fichier</span>
+                    <div class="cs-loader">
+                        <div class="cs-loader-inner">
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div id="results"></div>
+    </div>
+</body>
+
+</html>
