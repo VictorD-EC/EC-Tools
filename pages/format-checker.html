@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSEE Checker</title>
+    <title>Format Checker</title>
 
     <link rel="icon" sizes="60x60" href="../assets/favicon.png">
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/RSEE-checker.css">
 
-    <script src="../js/RSEE-checker.js" defer></script>
+    <script src="../js/format-checker.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -31,36 +33,21 @@
             </a>
             <a href="./easyIDS.html">EasyIDS</a>
             <a href="./easyTCO.html">EasyTCO</a>
-            <a class="selected" href="./RSEE-checker.html">RSEE-checker</a>
-            <a href="./format-checker.html">format-checker</a>
+            <a href="./RSEE-checker.html">RSEE-checker</a>
+            <a class="selected" href="./format-checker.html">Format-checker</a>
         </nav>
     </header>
 
     <div id="main" class="mt-5">
         <div id="form">
-            <h1>RSEE checker</h1>
+            <h1>Format checker</h1>
             <hr>
             <div class="mb-3">
                 <label for="file" class="form-label">Insérer le fichier xml*</label>
-                <input type="file" accept=".xml" class="form-control" name="file" id="inputFile">
-            </div>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="normal" id="verifBtn">
-                    <span>Vérifier mon fichier</span>
-                    <div class="cs-loader">
-                        <div class="cs-loader-inner">
-                            <label>●</label>
-                            <label>●</label>
-                            <label>●</label>
-                            <label>●</label>
-                            <label>●</label>
-                            <label>●</label>
-                        </div>
-                    </div>
-                </button>
+                <input class="form-control" type="file" id="pdfFile" accept=".pdf">
             </div>
         </div>
-        <div id="results"></div>
+        <div id="resultDisplay"></div>
     </div>
     <footer>
         <div>
