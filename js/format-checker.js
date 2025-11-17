@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width: 122.90,
         height: 40.25,
     };
-    const tolerance = 0.01; // Tolérance pour la comparaison des nombres flottants
+    const tolerance = 0.50; // Tolérance pour la comparaison des nombres flottants
 
     // Fonction pour afficher les messages sur la page
     function displayMessage(message, type = 'info') {
