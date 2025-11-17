@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Définition des valeurs attendues pour l'image ----
     const expected = {
         id: 'img_p0_1',
-        x: 70.85,
-        y: 686.27,
-        width: 127.20,
-        height: 84.80,
+        x: 47.45,
+        y: 768.00,
+        width: 122.90,
+        height: 40.25,
     };
     const tolerance = 0.01; // Tolérance pour la comparaison des nombres flottants
 
