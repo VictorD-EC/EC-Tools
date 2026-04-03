@@ -5,13 +5,34 @@ document.addEventListener('DOMContentLoaded', () => {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
     // ---- Définition des valeurs attendues pour l'image ----
-    const expected = {
+    const expected_modeleNote = {
         id: 'img_p0_1',
         x: 47.45,
         y: 768.00,
         width: 122.90,
         height: 40.25,
     };
+    const expected_masqueA4 = {
+        id: 'img_p0_1',
+        x: 567.75,
+        y: 646.25,
+        width: 21.50,
+        height: 179.50,
+    }
+    const expected_invitationEC = {
+        id: 'img_p0_1',
+        x: 47.45,
+        y: 768.00,
+        width: 122.90,
+        height: 40.25,
+    }
+    const expected_saveTheDate = {
+        id: 'img_p0_1',
+        x: 586.50,
+        y: 167.25,
+        width: 9.00,
+        height: 122.25,
+    }
     const tolerance = 0.50; // Tolérance pour la comparaison des nombres flottants
 
     // Fonction pour afficher les messages sur la page

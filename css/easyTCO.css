@@ -1,54 +1,116 @@
-.form {
+#easyConcaMain {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    border: 1px solid black;
-    gap: 10px;
-    border-radius: 5px;
-    height: fit-content;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.form {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 h2 {
-    color: blue;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
-thead th {
-    background-color: lightgray;
-    padding-left: 3px;
-    padding-right: 3px;
-    user-select: none;
-    font-size: 14px;
+/* Tabs */
+#formTabs {
+    display: flex;
+    background: #e2e8f0;
+    padding: 0.25rem;
+    border-radius: var(--radius-md);
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+#formTabs div {
+    flex: 1;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+}
+
+.tabSelected {
+    background: white;
+    color: var(--primary) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Table Styling */
+#table {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: auto;
+    border: 1px solid #e2e8f0;
 }
 
 table {
-    font-size: small;
-}
-
-table th,
-td {
-    border: 1px solid gray !important;
-    text-align: center;
-}
-
-table textarea,
-select {
-    border: none;
     width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    resize: none;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead th {
+    background: #f8fafc;
+    color: var(--text-primary);
+    font-weight: 700;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+td {
+    padding: 0.5rem;
+    border: 1px solid #f1f5f9;
+}
+
+textarea, select {
+    border: 1px solid transparent;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: transparent;
+    transition: all var(--transition-fast);
+}
+
+textarea:focus, select:focus {
+    background: #fff;
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(228, 0, 43, 0.1);
 }
 
 .conca {
-    background-color: rgba(61, 199, 61, 0.767);
+    background-color: rgba(228, 0, 43, 0.05);
+    color: var(--primary);
+    font-weight: 600;
 }
 
-#easyConcaMain {
-    display: flex;
-    height: calc(100vh - 107.5px);
+.obli {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+#prerequis {
+    padding: 2rem 0;
 }
 
 body {
@@ -60,38 +122,4 @@ body {
 body::-webkit-scrollbar {
     width: 0;
     height: 0;
-}
-
-#table {
-    overflow-y: scroll;
-    width: 100%;
-}
-.obli {
-    width: 100%;
-    font-size: 12px;
-    margin-bottom: 0;
-}
-
-#prerequis {
-    padding: 30px;
-    padding-top: 0px;
-}
-td {
-    min-height: 23px !important;
-}
-
-#formTabs {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px solid black;
-    cursor: pointer;
-}
-#formTabs div {
-    width: 50%;
-    text-align: center;
-}
-.tabSelected {
-    background-color: #0d6efd;
-    color: white;
 }

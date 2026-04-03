@@ -32,7 +32,7 @@
                     src="https://www.eiffage.com/files/live/sites/eiffagev2/files/Home/logo-eiffage.svg" alt="Accueil">
             </a>
             <a href="./easyIDS.html">EasyIDS</a>
-            <a href="./easyTCO.html">EasyTCO</a>
+            <!-- <a href="./easyTCO.html">EasyTCO</a> -->
             <a href="./RSEE-checker.html">RSEE-checker</a>
             <a class="selected" href="./format-checker.html">Format-checker</a>
         </nav>
@@ -44,8 +44,11 @@
             <hr>
             <div class="mb-3">
                 <label for="selectType" class="form-label">Choisir le type de document</label>
-                <select name="selectType" class="form-select mb-2"id="">
-                    <option value="pdfA4">MODELE NOTE</option>
+                <select name="selectType" class="form-select mb-2" id="">
+                    <option value="modeleNote">MODELE NOTE</option>
+                    <option value="masqueA4">MASQUE A4</option>
+                    <option value="invitationEC">Invitation EC</option>
+                    <option value="saveTheDate">Save the date</option>
                 </select>
                 <label for="file" class="form-label">Insérer le fichier xml*</label>
                 <input class="form-control" type="file" id="pdfFile" accept=".pdf">

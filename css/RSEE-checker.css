@@ -2,192 +2,200 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 #form {
-    box-shadow: 0 0 4px rgb(173, 173, 173);
-    border-radius: 4px;
-    padding: 15px;
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 #verifBtn {
     color: white;
-    padding: 6px 12px 6px 12px;
-    background-color: #0d6efd;
-    border: 1px solid transparent;
-    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    font-size: 16px;
-    width: 200px;
-    height: 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 240px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
 }
 
-#verifBtn.normal .cs-loader {
-    display: none !important;
+#verifBtn:hover:not(.loading):not(.normal) {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(228, 0, 43, 0.2);
 }
+
 #verifBtn.normal {
-    cursor: auto;
-    background-color: lightgray;
-    color: #353535;
-}
-#verifBtn.loading {
-    background-color: #124fac;
-    cursor: auto;
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
-#verifBtn.ready .cs-loader {
-    display: none !important;
-}
-#verifBtn.loading span {
-    display: none !important;
+#verifBtn.loading {
+    background-color: var(--secondary);
+    cursor: wait;
 }
 
 #results {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 20px;
+    gap: 1rem;
+    width: 100%;
+    padding: 0;
 }
 
-.error {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    background-color: rgba(255, 0, 0, 0.301);
-    border-radius: 5px;
-}
-
-.error p {
-    color: brown;
-    margin: 0;
-}
-
-.wrong {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    background-color: rgba(255, 230, 0, 0.301);
-    border-radius: 5px;
-}
-
-.wrong p {
-    color: rgb(136, 105, 5);
-    margin: 0;
-}
-
+.error,
+.wrong,
 .valid {
     display: flex;
     align-items: center;
-    padding: 8px;
-    background-color: rgba(21, 255, 0, 0.301);
-    border-radius: 5px;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.error {
+    background-color: #fff1f2;
+    border-left-color: #e11d48;
+}
+
+.error p {
+    color: #9f1239;
+    margin: 0;
+    font-weight: 600;
+}
+
+.wrong {
+    background-color: #fffbeb;
+    border-left-color: #d97706;
+}
+
+.wrong p {
+    color: #92400e;
+    margin: 0;
+    font-weight: 600;
+}
+
+.valid {
+    background-color: #f0fdf4;
+    border-left-color: #16a34a;
 }
 
 .valid p {
-    color: rgb(24, 107, 3);
+    color: #166534;
     margin: 0;
+    font-weight: 600;
 }
 
+/* Loader Styles */
 .cs-loader {
     position: absolute;
     top: 0;
     left: 0;
-    height: 40px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
+    display: none;
+    /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#verifBtn.loading .cs-loader {
+    display: flex;
+    /* Shown only when loading */
+}
+
+#verifBtn.loading span {
+    display: none;
+    /* Hide text when loading */
 }
 
 .cs-loader-inner {
-    transform: translateY(-50%) translateX(-15%);
-    top: 50%;
-    position: absolute;
-    width: 100%;
-    color: #FFF;
-    padding: 0 100px;
-    text-align: center;
-    display: flex !important;
+    display: flex;
+    gap: 0.25rem;
 }
 
 .cs-loader-inner label {
-    font-size: 20px;
+    font-size: 1.5rem;
     opacity: 0;
+    color: white;
     display: inline-block;
-    color: rgb(231, 231, 231);
+    animation: lol 1.5s infinite ease-in-out;
 }
 
 @keyframes lol {
     0% {
         opacity: 0;
-        transform: translateX(-60px);
+        transform: translateY(5px);
     }
 
-    33% {
+    50% {
         opacity: 1;
-        transform: translateX(0px);
-    }
-
-    66% {
-        opacity: 1;
-        transform: translateX(0px);
+        transform: translateY(0);
     }
 
     100% {
         opacity: 0;
-        transform: translateX(60px);
+        transform: translateY(-5px);
     }
-}
-
-@-webkit-keyframes lol {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateX(-60px);
-    }
-
-    33% {
-        opacity: 1;
-        -webkit-transform: translateX(0px);
-    }
-
-    66% {
-        opacity: 1;
-        -webkit-transform: translateX(0px);
-    }
-
-    100% {
-        opacity: 0;
-        -webkit-transform: translateX(60px);
-    }
-}
-
-.cs-loader-inner label:nth-child(6) {
-    -webkit-animation: lol 3s infinite ease-in-out;
-    animation: lol 3s infinite ease-in-out;
-}
-
-.cs-loader-inner label:nth-child(5) {
-    -webkit-animation: lol 3s 100ms infinite ease-in-out;
-    animation: lol 3s 100ms infinite ease-in-out;
-}
-
-.cs-loader-inner label:nth-child(4) {
-    -webkit-animation: lol 3s 200ms infinite ease-in-out;
-    animation: lol 3s 200ms infinite ease-in-out;
-}
-
-.cs-loader-inner label:nth-child(3) {
-    -webkit-animation: lol 3s 300ms infinite ease-in-out;
-    animation: lol 3s 300ms infinite ease-in-out;
-}
-
-.cs-loader-inner label:nth-child(2) {
-    -webkit-animation: lol 3s 400ms infinite ease-in-out;
-    animation: lol 3s 400ms infinite ease-in-out;
 }
 
 .cs-loader-inner label:nth-child(1) {
-    -webkit-animation: lol 3s 500ms infinite ease-in-out;
-    animation: lol 3s 500ms infinite ease-in-out;
+    animation-delay: 0.1s;
+}
+
+.cs-loader-inner label:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.cs-loader-inner label:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.cs-loader-inner label:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.cs-loader-inner label:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.cs-loader-inner label:nth-child(6) {
+    animation-delay: 0.6s;
 }

@@ -1,6 +1,99 @@
 #indexMain {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 30px;
+    gap: 4rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#indexMain h1 {
+    font-weight: 800;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+#indexMain h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* Tool Sections as Cards */
+#indexMain .d-flex {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+#indexMain .d-flex:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+#indexMain .w-50.p-5 {
+    padding: 3rem !important;
+}
+
+#indexMain h4 {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+#indexMain p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Image Containers */
+#indexMain .w-50.p-3 {
+    padding: 2rem !important;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important; /* Overriding inline style */
+}
+
+#indexMain img {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
+    object-fit: contain;
+}
+
+#indexMain .d-flex:hover img {
+    transform: scale(1.02);
+}
+
+/* Animation refinement */
+#indexMain > div:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 992px) {
+    #indexMain .d-flex {
+        flex-direction: column !important;
+    }
+    
+    #indexMain .w-50 {
+        width: 100% !important;
+    }
+    
+    #indexMain .w-50.p-5 {
+        padding: 2rem !important;
+    }
 }
